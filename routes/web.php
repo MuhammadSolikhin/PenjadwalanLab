@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LaboranController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserControler;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,6 +22,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::resource('user', UserControler::class);
 });
 
 Route::middleware(['auth', 'role:laboran'])->group(function(){

@@ -8,6 +8,7 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $page = 'Dashboard Admin';
+        return view('admin.dashboard', compact('page'));
     }
 }
