@@ -16,7 +16,7 @@ class UserControler extends Controller
         $users = User::all();
         $no = 1;
         return view('admin.user.index', compact('page', 'users', 'no'));
-    }
+    } 
 
     /**
      * Show the form for creating a new resource.

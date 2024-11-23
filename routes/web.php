@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserControler;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LaboranController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserControler;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LaboratoriumTypeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +24,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::resource('user', UserControler::class);
+
+    // Laboratorium TYPE
+    Route::get('/admin/jenis-laboratorium', [LaboratoriumTypeController::class, 'index'])->name('admin.jenis-laboratorium');
+    // Route::post('/karyawan/tambah-karyawan', [AdminKaryawanController::class, 'tambah']); 
+
 });
 
 Route::middleware(['auth', 'role:laboran'])->group(function(){

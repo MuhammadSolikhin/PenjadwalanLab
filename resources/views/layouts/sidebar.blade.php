@@ -43,6 +43,12 @@
                             <p>User</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/jenis-lab" class="nav-link">
+                            <i class="nav-icon fas fa-solid fa-flask"></i>
+                            <p>Jenis Lab</p>
+                        </a>
+                    </li>
                 @endif
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
