@@ -44,9 +44,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/jenis-lab" class="nav-link">
+                        <a href="{{ route('admin.jenis-laboratorium') }}" class="nav-link">
                             <i class="nav-icon fas fa-solid fa-flask"></i>
-                            <p>Jenis Lab</p>
+                            <p>Jenis Laboratorium</p>
                         </a>
                     </li>
                 @endif

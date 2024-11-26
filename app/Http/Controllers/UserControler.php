@@ -14,7 +14,7 @@ class UserControler extends Controller
     {
         $page = 'Data User';
         $users = User::all();
-        $no = 1;
+        $no = 1; 
         return view('admin.user.index', compact('page', 'users', 'no'));
     } 
 

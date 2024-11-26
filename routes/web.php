@@ -27,8 +27,10 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
     // Laboratorium TYPE
     Route::get('/admin/jenis-laboratorium', [LaboratoriumTypeController::class, 'index'])->name('admin.jenis-laboratorium');
-    // Route::post('/karyawan/tambah-karyawan', [AdminKaryawanController::class, 'tambah']); 
-
+    Route::get('/admin/tambah-jenis-laboratorium', [LaboratoriumTypeController::class, 'create'])->name('admin.jenis-laboratorium.create');
+    Route::post('/admin/tambah-jenis-laboratorium', [LaboratoriumTypeController::class, 'store']);
+    Route::get('/admin/{laboratorium_type:slug}/edit-jenis-laboratorium', [LaboratoriumTypeController::class, 'edit'])->name('admin.jenis-laboratorium.edit');
+    Route::put('/admin/{laboratorium_type:slug}/edit-jenis-laboratorium', [LaboratoriumTypeController::class, 'update']);
 });
 
 Route::middleware(['auth', 'role:laboran'])->group(function(){

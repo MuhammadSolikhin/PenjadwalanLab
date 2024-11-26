@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('laboratorium_types', function (Blueprint $table) {
             $table->id(); 
+            $table->string('slug');
             $table->string('name');
             $table->text('description');
             $table->timestamps();
         });
-        
     }
 
     /**
