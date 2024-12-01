@@ -43,6 +43,12 @@
                             <p>User</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/admin/laboratorium" class="nav-link">
+                            <i class="nav-icon fas fa-flask"></i>
+                            <p>Laboratorium</p>
+                        </a>
+                    </li>
                 @endif
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
