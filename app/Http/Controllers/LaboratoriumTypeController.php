@@ -12,10 +12,11 @@ class LaboratoriumTypeController extends Controller
 {
     public function index()
     {
+        $no = 1;
         $laboratorium_types = LaboratoriumType::all();
         $page = 'Jenis Laboratorium';
 
-        return view('admin.laboratorium-type.index',compact('page', 'laboratorium_types'));
+        return view('admin.laboratorium-type.index',compact('page', 'laboratorium_types', 'no'));
     }
 
     public function create()

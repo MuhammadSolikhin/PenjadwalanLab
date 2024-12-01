@@ -1,65 +1,97 @@
 @extends('layouts.main')
+@push('css')
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{asset('AdminLte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('AdminLte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('AdminLte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+@endpush 
 @section('content')
 <section class="content">
     <div class="container-fluid">
-        <div class="row pb-2">
-            <x-validation-message></x-validation-message>
-        </div>
-        <div class="row pb-2">
-            <div class="col-12 d-flex justify-content-end">
-                <a href="{{ route('admin.jenis-laboratorium.create') }}"><button class="btn btn-primary">Tambah</button></a>
-            </div>
+        <div class="row mb-2">
+            <x.validation-message></x.validation-message>
         </div>
         <div class="row">
             <div class="col-12">
-                <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Jenis Laboratorium</h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                                <i class="fas fa-times"></i>
-                            </button>
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                            <h3 class="card-title mb-2 mb-md-0">Data Jenis Laboratorium</h3>
+                            <a href="{{ route('admin.jenis-laboratorium.create') }}" class="col-12 col-md-3 btn btn-primary">
+                                <i class="fas fa-solid fa-plus"></i> Tambah
+                            </a>
                         </div>
                     </div>
+                    <!-- /.card-header -->
                     <div class="card-body">
-                        <table class="table table-bordered table-striped">
+                        <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Nama</th>
+                                    <th>No</th>
+                                    <th>Jenis Laboratorium</th>
                                     <th>Deskripsi</th>
-                                    <th>Aksi</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($laboratorium_types as $data)
-                                <tr>
-                                    <td>{{ $data->id }}</td>
-                                    <td>{{ $data->name }}</td>
-                                    <td>{{ $data->description }}</td>
-                                    <td>
-                                        <a href="{{ route('admin.jenis-laboratorium.edit', $data->slug) }}" class="btn btn-primary">Edit</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
+                                @foreach ($laboratorium_types as $laboratorium_type)
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $laboratorium_type->name}}</td>
+                                        <td>{{ $laboratorium_type->description}}</td>
+                                        <td class="text-center">
+                                            <a href="{{ route('admin.jenis-laboratorium.edit', $laboratorium_type) }}" class="text-dark bg-primary p-2 rounded">
+                                                <i class="fas fa-regular fa-pen-to-square"></i>
+                                            </a>
+                                            <a href="" class="text-dark bg-danger rounded p-2 ml-2">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                    </div> 
+                    </div>
                     <!-- /.card-body -->
-                    {{-- <div class="card-footer">
-                        <a href="{{ route('admin.laboratorium-type.create') }}" class="btn btn-primary">Tambah Jenis Laboratorium</a>
-                    </div> --}}
-                    <!-- /.card-footer-->
                 </div>
-                <!-- /.card -->
             </div>
         </div>
     </div>
 </section>
+
 @endsection
+
+@push('scripts')
+    <!-- DataTables  & Plugins -->
+    <script src="{{asset('AdminLte/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('AdminLte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('AdminLte/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('AdminLte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('AdminLte/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('AdminLte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('AdminLte/plugins/jszip/jszip.min.js')}}"></script>
+    <script src="{{asset('AdminLte/plugins/pdfmake/pdfmake.min.js')}}"></script>
+    <script src="{{asset('AdminLte/plugins/pdfmake/vfs_fonts.js')}}"></script>
+    <script src="{{asset('AdminLte/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('AdminLte/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+    <script src="{{asset('AdminLte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+@endpush

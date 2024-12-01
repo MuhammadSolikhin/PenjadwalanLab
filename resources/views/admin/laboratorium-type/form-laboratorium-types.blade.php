@@ -27,7 +27,7 @@
             <div class="col-12 d-flex justify-content-end">
                 <button type="reset" class="btn btn-danger mr-2">Reset</button>
                 <button type="submit" class="btn btn-primary">{{ $page_meta['button_text'] }}</button>
-            </div>
+            </div> 
         </form>
     </div>
 </section>
