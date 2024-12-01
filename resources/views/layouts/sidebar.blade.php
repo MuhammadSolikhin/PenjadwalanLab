@@ -43,6 +43,12 @@
                             <p>User</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/admin/meja" class="nav-link">
+                            <i class="nav-icon fas fa-network-wired"></i>
+                            <p>Meja</p>
+                        </a>
+                    </li>
                 @endif
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
