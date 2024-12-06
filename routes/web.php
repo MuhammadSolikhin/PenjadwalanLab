@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserControler;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LaboranController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserControler;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\Barang\BarangController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,7 +17,15 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::resource('user', UserControler::class);
+    Route::resource('user', UserControler::class); 
+
+    // Barang
+    Route::get('/admin/barang', [BarangController::class, 'index'])->name('admin.barang');
+    Route::get('/admin/barang/tambah-barang', [BarangController::class, 'create'])->name('admin.barang.create');
+    Route::post('/admin/barang/tambah-barang', [BarangController::class, 'store']);
+    Route::get('/admin/{barang:slug}/ubah-barang', [BarangController::class, 'edit'])->name('admin.barang.edit');
+    Route::put('/admin/{barang:slug}/ubah-barang', [BarangController::class, 'update']);
+
 });
 
 Route::middleware(['auth', 'role:laboran'])->group(function(){
