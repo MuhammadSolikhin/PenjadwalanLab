@@ -74,24 +74,31 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://images8.alphacoders.com/133/1338961.png" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
+                <img src="{{ asset('images/lab-mobile.jpg') }}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block text-start">
+                    <h5 class="fs-1 mytext-shadowed">Laboratorium Mobile Programming</h5>
+                    <p class="mytext-shadowed">Laboratorium dengan spesifikasi tinggi untuk mendukung praktikum dengan
+                        proses yang kompleks khususnya untuk mata kuliah Mobile Programming</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="https://images2.alphacoders.com/135/1351865.png" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
+                <img src="{{ asset('images/lab-networking.jpg') }}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block text-start">
+                    <h5 class="fs-1 mytext-shadowed">Laboratorium Jaringan Komputer</h5>
+                    <p class="mytext-shadowed">Laboratorium yang dirancang untuk kegiatan praktikum, pelatihan, dan
+                        penelitian dalam bidang jaringan komputer. Fasilitas ini dilengkapi dengan peralatan dan
+                        perangkat
+                        keras untuk mendukung pembelajaran tentang desain, instalasi, konfigurasi, pengujian, serta
+                        pengelolaan jaringan komputer.
+                    </p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="https://images8.alphacoders.com/133/1337830.png" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
+                <img src="{{ asset('images/cbt.jpg') }}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block text-start">
+                    <h5 class="fs-1 mytext-shadowed">CBT (Computer Based Test)</h5>
+                    <p class="mytext-shadowed">Laboratorium yang diprioritaskan untuk mendukung proses pengujian
+                        akademik untuk mahasiswa/i Universitas Pamulang</p>
                 </div>
             </div>
         </div>
@@ -273,9 +280,9 @@
             <div class="col">
                 <h4 class="fw-semibold text-light">Jangan Sungkan Untuk Menghubungi Kami</h3>
             </div>
-                <div class="col-md-4">
-                    <a type="button" class="btn btn-outline-light b-3" href="#">Hubungi Kami</a>
-                </div>
+            <div class="col-md-4">
+                <a type="button" class="btn btn-outline-light b-3" href="#">Hubungi Kami</a>
+            </div>
         </div>
     </div>
 

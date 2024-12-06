@@ -6,6 +6,10 @@ body {
     font-family: 'Work Sans';
 }
 
+.mytext-shadowed {
+    text-shadow: 4px 4px 10px #000000;
+}
+
 .mysite-title {
     color: rgba(111, 78, 55, 1);
 }
