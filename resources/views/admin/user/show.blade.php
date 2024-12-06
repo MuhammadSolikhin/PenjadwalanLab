@@ -24,6 +24,10 @@
                             <p>{{ ucfirst($user->role) }}</p>
                         </div>
                         <div class="form-group">
+                            <label>Priority:</label>
+                            <p>{{ $user->priority }}</p>
+                        </div>
+                        <div class="form-group">
                             <label>Dibuat pada:</label>
                             <p>{{ $user->created_at->format('d M Y, H:i') }}</p>
                         </div>
