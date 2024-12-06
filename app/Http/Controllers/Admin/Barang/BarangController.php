@@ -20,7 +20,7 @@ class BarangController extends Controller
     }
 
     public function create()
-    {
+    { 
         $page = "Tambah Barang";
 
         return view('admin.barang.form', [

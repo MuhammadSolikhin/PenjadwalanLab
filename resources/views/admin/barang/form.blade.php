@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-
+  
 <section class="content">
     <div class="container-fluid">
         <form action="{{ $page_meta['url'] }}" method="POST">
