@@ -34,8 +34,18 @@ class UserControler extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        User::create($request->validated());
-
+        $priority = match ($request->role) {
+            'admin' => 1,
+            'laboran' => 2,
+            'user' => 3,
+            default => null,
+        };
+    
+        User::create(array_merge(
+            $request->validated(),
+            ['priority' => $priority]
+        ));
+    
         return redirect()->route('user.index')
             ->with('success', 'User created successfully.');
     }

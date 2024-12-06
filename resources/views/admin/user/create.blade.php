@@ -41,6 +41,17 @@
                                     <div class="form-text text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <div class="form-group">
+                                <label for="role">Role</label>
+                                <select name="role" class="form-control @error('role') is-invalid @enderror" id="role">
+                                    <option value="admin">Admin</option>
+                                    <option value="laboran">Laboran</option>
+                                    <option value="user">User</option>
+                                </select>
+                                @error('role')
+                                    <div class="form-text text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                         <!-- /.card-body -->
 

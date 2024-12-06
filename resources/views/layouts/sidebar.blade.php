@@ -55,13 +55,19 @@
                             <p>Jenis Laboratorium</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/admin/barang" class="nav-link">
+                            <i class="nav-icon fas fa-box"></i>
+                            <p>Barang</p>
+                        </a>
+                    </li>
                 @endif
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a href="/logout" onclick="event.preventDefault(); this.closest('form').submit();"
                             class="nav-link">
-                            <i class="nav-icon far fa-sign-out"></i>
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
                             <p>logout</p>
                         </a>
                     </form>

@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LaboranController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LaboratoriumTypeController;
+use App\Http\Controllers\Admin\Barang\BarangController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +34,15 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::post('/admin/tambah-jenis-laboratorium', [LaboratoriumTypeController::class, 'store']);
     Route::get('/admin/{laboratorium_type:slug}/edit-jenis-laboratorium', [LaboratoriumTypeController::class, 'edit'])->name('admin.jenis-laboratorium.edit');
     Route::put('/admin/{laboratorium_type:slug}/edit-jenis-laboratorium', [LaboratoriumTypeController::class, 'update']);
+    Route::resource('user', UserControler::class); 
+
+    // Barang
+    Route::get('/admin/barang', [BarangController::class, 'index'])->name('admin.barang');
+    Route::get('/admin/barang/tambah-barang', [BarangController::class, 'create'])->name('admin.barang.create');
+    Route::post('/admin/barang/tambah-barang', [BarangController::class, 'store']);
+    Route::get('/admin/{barang:slug}/ubah-barang', [BarangController::class, 'edit'])->name('admin.barang.edit');
+    Route::put('/admin/{barang:slug}/ubah-barang', [BarangController::class, 'update']);
+
 });
 
 Route::middleware(['auth', 'role:laboran'])->group(function(){
