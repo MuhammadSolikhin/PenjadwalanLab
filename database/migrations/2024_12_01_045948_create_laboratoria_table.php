@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->String('slug');
             $table->string('lokasi');
-            $table->string('kapasitas');
+            $table->integer('kapasitas');
             $table->string('status');
 
             // $table->unsignedBigInteger('jenis_id');

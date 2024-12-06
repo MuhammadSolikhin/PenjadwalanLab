@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Laboratorium\LaboratoriumController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserControler;
 use App\Http\Controllers\AdminController;
@@ -19,6 +20,13 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::resource('user', UserControler::class);
+
+    // Laboratorium
+    Route::get('/admin/laboratorium', [LaboratoriumController::class, 'index'])->name('admin.laboratorium');
+    Route::get('/admin/laboratorium/tambah-laboratorium', [LaboratoriumController::class, 'create'])->name('admin.laboratorium.create');
+    Route::post('/admin/laboratorium/tambah-laboratorium', [LaboratoriumController::class, 'store']);
+    Route::get('/admin/{laboratorium:slug}/edit', [LaboratoriumController::class, 'edit'])->name('admin.laboratorium.edit');
+    Route::put('/admin/{laboratorium:slug}/edit', [LaboratoriumController::class, 'update']);
 
     // Laboratorium TYPE
     Route::get('/admin/jenis-laboratorium', [LaboratoriumTypeController::class, 'index'])->name('admin.jenis-laboratorium');
