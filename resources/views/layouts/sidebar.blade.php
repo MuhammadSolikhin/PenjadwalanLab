@@ -61,6 +61,15 @@
                             <p>Barang</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/penjadwalan" class="nav-link">
+                            <i class="nav-icon fas fa-clipboard-list"></i>
+                            <p>Penjadwalan</p>
+                        </a>
+                    </li>
+                @endif
+
+                @if (auth()->user()->role == 'user')
                 @endif
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
