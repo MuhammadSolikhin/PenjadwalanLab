@@ -40,9 +40,21 @@
                 <div class="navbar-nav">
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="nav-link">
-                                Dashboard
-                            </a>
+                            @if (auth()->user()->role == 'admin')
+                                <a href="{{ url('/admin/dashboard') }}" class="nav-link">
+                                    Admin Dashboard
+                                </a>
+                            @endif
+                            @if (auth()->user()->role == 'laboran')
+                                <a href="{{ url('/laboran/dashboard') }}" class="nav-link">
+                                    Laboran Dashboard
+                                </a>
+                            @endif
+                            @if (auth()->user()->role == 'user')
+                                <a href="{{ url('/user/dashboard') }}" class="nav-link">
+                                    User Dashboard
+                                </a>
+                            @endif
                         @else
                             <a href="{{ route('login') }}" class="nav-link">
                                 Login
@@ -166,8 +178,7 @@
                 <div class="col">
                     <div class="card border-0">
                         <div class="card-body mycard-brown p-5">
-                            <img class="myicons-feature" src="{{ asset('images/icons/settings.png') }}"
-                                alt="">
+                            <img class="myicons-feature" src="{{ asset('images/icons/settings.png') }}" alt="">
                             <center>
                                 <hr class="mydivider-white">
                             </center>
@@ -178,8 +189,7 @@
                 <div class="col">
                     <div class="card border-0">
                         <div class="card-body p-5">
-                            <img class="myicons-feature" src="{{ asset('images/icons/submission.png') }}"
-                                alt="">
+                            <img class="myicons-feature" src="{{ asset('images/icons/submission.png') }}" alt="">
                             <center>
                                 <hr class="mydivider-brown my-3">
                             </center>
@@ -200,8 +210,7 @@
                     <div class="col-md-8 mycard m-3 p-2">
                         <div class="row">
                             <div class="col">
-                                <img class="facility-icons" src="{{ asset('images/icons/sketch.png') }}"
-                                    alt="">
+                                <img class="facility-icons" src="{{ asset('images/icons/sketch.png') }}" alt="">
                             </div>
                             <div class="col text-start">
                                 <p class="fs-1 fw-bold m-0">80</p>
@@ -215,8 +224,7 @@
                     <div class="col-md-8 mycard m-3 py-2">
                         <div class="row">
                             <div class="col">
-                                <img class="facility-icons" src="{{ asset('images/icons/computer.png') }}"
-                                    alt="">
+                                <img class="facility-icons" src="{{ asset('images/icons/computer.png') }}" alt="">
                             </div>
                             <div class="col text-start">
                                 <p class="fs-1 fw-bold m-0">518</p>
@@ -230,8 +238,7 @@
                     <div class="col-md-8 mycard m-3 py-2">
                         <div class="row">
                             <div class="col">
-                                <img class="facility-icons" src="{{ asset('images/icons/schedule-note.png') }}"
-                                    alt="">
+                                <img class="facility-icons" src="{{ asset('images/icons/schedule-note.png') }}" alt="">
                             </div>
                             <div class="col text-start">
                                 <p class="fs-1 fw-bold m-0">67</p>
@@ -245,8 +252,7 @@
                     <div class="col-md-8 mycard m-3 py-2">
                         <div class="row">
                             <div class="col">
-                                <img class="facility-icons" src="{{ asset('images/icons/faculty.png') }}"
-                                    alt="">
+                                <img class="facility-icons" src="{{ asset('images/icons/faculty.png') }}" alt="">
                             </div>
                             <div class="col text-start">
                                 <p class="fs-1 fw-bold m-0">4</p>

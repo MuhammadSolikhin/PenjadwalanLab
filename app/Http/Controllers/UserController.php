@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
+use Hash;
 use Illuminate\Http\Request;
 
-class UserControler extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,6 +19,42 @@ class UserControler extends Controller
             'admin.user.index',
             ['page' => 'Data User', 'users' => User::all(), 'no' => 1]
         );
+    }
+
+    public function dashboard()
+    {
+        $page = 'Dashboard User';
+        return view('user.dashboard', compact('page'));
+    }
+
+    public function profile()
+    {
+        $user = User::findOrFail(auth()->id());
+        $page = 'Profile User';
+        return view('user.profile', compact('page', 'user'));
+    }
+
+    public function profile_update(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . auth()->id()],
+            'password' => ['nullable', 'confirmed', 'min:8'],
+        ]);
+
+        $user = User::findOrFail(auth()->id());
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
+
+        return redirect()->route('user.dashboard')->with('success', 'Profile updated successfully!');
     }
 
     /**
@@ -40,12 +77,12 @@ class UserControler extends Controller
             'user' => 3,
             default => null,
         };
-    
+
         User::create(array_merge(
             $request->validated(),
             ['priority' => $priority]
         ));
-    
+
         return redirect()->route('user.index')
             ->with('success', 'User created successfully.');
     }
@@ -56,7 +93,7 @@ class UserControler extends Controller
     public function show(User $user)
     {
         $page = 'Detail Data User';
-        return view('admin.user.show', compact('user','page'));
+        return view('admin.user.show', compact('user', 'page'));
 
     }
 

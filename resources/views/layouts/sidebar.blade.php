@@ -38,6 +38,12 @@
                with font-awesome or any other icon font library -->
                 @if (auth()->user()->role == 'admin')
                     <li class="nav-item">
+                        <a href="{{route('admin.dashboard')}}" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="/user" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>User</p>
@@ -69,7 +75,33 @@
                     </li>
                 @endif
 
-                @if (auth()->user()->role == 'user')
+                @if (auth()->user()->role == 'other')
+                    <li class="nav-item">
+                        <a href="{{route('user.dashboard')}}" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('user.profile')}}" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>Profile</p>
+                        </a>
+                    </li>
+                @endif
+                @if (auth()->user()->role == 'laboran')
+                    <li class="nav-item">
+                        <a href="{{route('laboran.dashboard')}}" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('laboran.profile')}}" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>Profile</p>
+                        </a>
+                    </li>
                 @endif
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
