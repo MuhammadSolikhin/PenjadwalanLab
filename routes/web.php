@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\Laboratorium\LaboratoriumController;
 use App\Http\Controllers\PenjadwalanController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserControler;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LaboranController;
 use App\Http\Controllers\ProfileController;
@@ -20,7 +20,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::resource('user', UserControler::class);
+    Route::resource('user', UserController::class);
     Route::resource('penjadwalan', PenjadwalanController::class);
 
     // Laboratorium
@@ -46,12 +46,17 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
 });
 
-Route::middleware(['auth', 'role:user'])->group(function(){
-    Route::get('/user/dashboard', [LaboranController::class, 'dashboard'])->name('user.dashboard');
+Route::middleware(['auth', 'role:other'])->group(function(){
+    Route::get('/other/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard'); 
+    Route::get('/other/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::put('/other/profile', [UserController::class, 'profile_update'])->name('user.profile_update');
 });
 
 Route::middleware(['auth', 'role:laboran'])->group(function(){
     Route::get('/laboran/dashboard', [LaboranController::class, 'dashboard'])->name('laboran.dashboard');
+    Route::get('/laboran/profile', [LaboranController::class, 'profile'])->name('laboran.profile');
+    Route::put('/laboran/profile', [LaboranController::class, 'profile_update'])->name('laboran.profile_update');
+
 });
 
 require __DIR__.'/auth.php';
