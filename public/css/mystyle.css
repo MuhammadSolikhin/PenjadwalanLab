@@ -14,8 +14,12 @@ body {
     color: rgba(111, 78, 55, 1);
 }
 
-.myservice-container {
+.mycontainer-service {
     background-color: rgba(254, 216, 177, 1);
+}
+
+.myimage-darken {
+    filter: brightness(50%);
 }
 
 .mytext-brown {

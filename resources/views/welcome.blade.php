@@ -74,7 +74,7 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('images/lab-mobile.jpg') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('images/lab-mobile.jpg') }}" class="d-block w-100 myimage-darken" alt="...">
                 <div class="carousel-caption d-none d-md-block text-start">
                     <h5 class="fs-1 mytext-shadowed">Laboratorium Mobile Programming</h5>
                     <p class="mytext-shadowed">Laboratorium dengan spesifikasi tinggi untuk mendukung praktikum dengan
@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('images/lab-networking.jpg') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('images/lab-networking.jpg') }}" class="d-block w-100 myimage-darken" alt="...">
                 <div class="carousel-caption d-none d-md-block text-start">
                     <h5 class="fs-1 mytext-shadowed">Laboratorium Jaringan Komputer</h5>
                     <p class="mytext-shadowed">Laboratorium yang dirancang untuk kegiatan praktikum, pelatihan, dan
@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('images/cbt.jpg') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('images/cbt.jpg') }}" class="d-block w-100 myimage-darken" alt="...">
                 <div class="carousel-caption d-none d-md-block text-start">
                     <h5 class="fs-1 mytext-shadowed">CBT (Computer Based Test)</h5>
                     <p class="mytext-shadowed">Laboratorium yang diprioritaskan untuk mendukung proses pengujian
@@ -148,7 +148,7 @@
     </div>
 
     {{-- Collaborate With --}}
-    <div class="myservice-container text-center py-5 mb-5">
+    <div class="mycontainer-service text-center py-5 mb-5">
         <h4 class="fs-3 pb-5">Fitur Aplikasi</h4>
         <div class="container">
             <div class="row row-cols-1 row-cols-md-3 g-4  mb-5">
