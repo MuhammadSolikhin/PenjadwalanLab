@@ -22,12 +22,12 @@ class PenjadwalanStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required|exists:users,id',
-            'lab_id' => 'required|exists:laboratoria,id',
-            'tgl_mulai' => 'required|date',
-            'tgl_selesai' => 'required|date|after:tgl_mulai',
-            'keperluan' => 'required|string|max:255',
-            'status' => 'in:pending,disetujui,ditolak',
+            'lab_ids' => 'required|array',
+            'keperluan' => 'required|string',
+            'jenis' => 'required|string',
+            'lab_ids.*' => 'exists:labs,id',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
         ];
     }
 }

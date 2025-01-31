@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'name' => 'User',
             'email' => 'user@gmail.com',
             'password' => Hash::make('123456'),
-            'role' => 'user',
+            'role' => 'other',
             'priority' => 3
         ]);
 
@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
             'name' => 'User 2',
             'email' => 'user2@gmail.com',
             'password' => Hash::make('123456'),
-            'role' => 'user',
+            'role' => 'other',
             'priority' => 3
         ]);
     }

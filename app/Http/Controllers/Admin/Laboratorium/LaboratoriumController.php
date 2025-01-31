@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Laboratorium;
 
-use App\Models\Laboratorium;
+use App\Models\Lab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -15,7 +15,7 @@ class LaboratoriumController extends Controller
     {
         $no = 1;
         $page = 'Laboratorium';
-        $laboratoriums = Laboratorium::latest()->select('id', 'name', 'lokasi', 'kapasitas', 'status', 'slug')->get();
+        $laboratoriums = Lab::latest()->select('id', 'name', 'lokasi', 'kapasitas')->get();
         return view('admin.laboratorium.index', compact('laboratoriums', 'page', 'no'));
     }
 
@@ -24,7 +24,7 @@ class LaboratoriumController extends Controller
         $page = "Tambah Laboratorium";
 
         return view('admin.laboratorium.form', [
-            'laboratorium' => new Laboratorium(),
+            'laboratorium' => new Lab(),
             'page' => $page,
             'page_meta' => [
                 'method' => 'POST',
@@ -40,7 +40,7 @@ class LaboratoriumController extends Controller
 
         DB::beginTransaction();
         try {
-            $laboratorium = Laboratorium::create($request->all());
+            $laboratorium = Lab::create($request->all());
 
             DB::commit();
 
@@ -51,7 +51,7 @@ class LaboratoriumController extends Controller
         }
     }
 
-    public function edit(Laboratorium $laboratorium)
+    public function edit(Lab $laboratorium)
     {
         $page = "Ubah Laboratorium";
 
@@ -66,7 +66,7 @@ class LaboratoriumController extends Controller
         ]);
     }
 
-    public function update(LaboratoriumRequestUpdate $request, Laboratorium $laboratorium)
+    public function update(LaboratoriumRequestUpdate $request, Lab $laboratorium)
     {
         // dd($request->all());
 

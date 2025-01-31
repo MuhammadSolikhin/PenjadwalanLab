@@ -38,7 +38,7 @@
 
                             <div class="form-group">
                                 <label for="lab_ids" class="form-label">Pilih Lab</label>
-                                <select class="form-control select2" name="lab_ids[]" id="lab_ids" multiple required>
+                                <select class="form-control" name="lab_ids[]" id="lab_ids" multiple required>
                                     @foreach($labs as $lab)
                                         <option value="{{ $lab->id }}">{{ $lab->name }} ({{ $lab->kapasitas }})</option>
                                     @endforeach
@@ -47,7 +47,7 @@
 
                             <div class="form-group">
                                 <label for="jam_ids" class="form-label">Pilih Jam</label>
-                                <select class="form-control select2" name="jam_ids[]" id="jam_ids" multiple required>
+                                <select class="form-control" name="jam_ids[]" id="jam_ids" multiple required>
                                     @foreach($jams as $jam)
                                         <option value="{{ $jam->id }}">{{ $jam->waktu_mulai }} - {{ $jam->waktu_selesai }}
                                         </option>

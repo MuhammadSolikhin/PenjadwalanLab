@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="{{asset('AdminLte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('AdminLte/dist/css/adminlte.min.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     @stack('css')
-
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -27,7 +27,8 @@
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{asset('AdminLte/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="{{asset('AdminLte/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo"
+                height="60" width="60">
         </div>
         <!-- Navbar -->
         @include('layouts.navbar')
@@ -70,7 +71,7 @@
     <script src="{{asset('AdminLte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('AdminLte/dist/js/adminlte.min.js')}}"></script>
-    
+
     @stack('scripts')
 </body>
 

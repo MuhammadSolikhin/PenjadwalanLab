@@ -10,20 +10,24 @@
 
 <section class="content">
     <div class="container-fluid">
-        <div class="row mb-2">
-            @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-        </div>
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex flex-wrap justify-content-between align-items-center">
                             <h3 class="card-title mb-2 mb-md-0">Data Laboratorium</h3>
-                            <a href="{{ route('user.penjadwalan.create') }}" class="col-12 col-md-3 btn btn-primary">
+                            <a href="{{ route('penjadwalan.create') }}" class="col-12 col-md-3 btn btn-primary">
                                 <i class="fas fa-solid fa-plus"></i> Tambah
                             </a>
                         </div>
@@ -54,8 +58,8 @@
                                                 action="{{ route('penjadwalan.destroy', $jadwal->id) }}" method="POST">
 
                                                 <a class="btn btn-info btn-sm"
-                                                    href="{{ route('penjadwalan.show', $jadwal->id) }}">
-                                                    <i class="fas fa-list"></i> Show</a>
+                                                    href="{{ route('laboran.penjadwalan.show', $jadwal->id) }}">
+                                                    <i class="fas fa-list"></i> Detail</a>
 
                                                 <a class="btn btn-primary btn-sm"
                                                     href="{{ route('penjadwalan.edit', $jadwal->id) }}">

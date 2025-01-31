@@ -33,29 +33,6 @@
                     </div>
                 @enderror
             </div>
-            <div class="col-12 mb-3">
-                <label for="status-laboratorium">Status</label>
-                <select 
-                    name="status" 
-                    id="status-laboratorium" 
-                    class="form-control @error('status') is-invalid @enderror"
-                >
-                    <option value="" disabled {{ old('status', $laboratorium->status) === null ? 'selected' : '' }}>
-                    Pilih Status
-                    </option>
-                    <option value="aktif" {{ old('status', $laboratorium->status) === 'aktif' ? 'selected' : '' }}>
-                        Aktif
-                    </option>
-                    <option value="tidak aktif" {{ old('status', $laboratorium->status) === 'tidak aktif' ? 'selected' : '' }}>
-                        Tidak Aktif
-                    </option>
-                </select>
-                @error('status')
-                    <div class="invalid-feedback d-block">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
             
             <div class="col-12 d-flex justify-content-end">
                 <button type="reset" class="btn btn-danger mr-2">Reset</button>

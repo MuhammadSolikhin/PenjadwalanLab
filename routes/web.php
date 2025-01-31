@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LaboranController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LaboratoriumTypeController;
 use App\Http\Controllers\Admin\Barang\BarangController;
 
@@ -18,18 +17,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware(['auth', 'role:admin'])->group(function(){
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::resource('user', UserController::class);
-    Route::resource('penjadwalan', PenjadwalanController::class);
-
     // Laboratorium
-    Route::get('/admin/laboratorium', [LaboratoriumController::class, 'index'])->name('admin.laboratorium');
-    Route::get('/admin/laboratorium/tambah-laboratorium', [LaboratoriumController::class, 'create'])->name('admin.laboratorium.create');
-    Route::post('/admin/laboratorium/tambah-laboratorium', [LaboratoriumController::class, 'store']);
-    Route::get('/admin/{laboratorium:slug}/edit', [LaboratoriumController::class, 'edit'])->name('admin.laboratorium.edit');
-    Route::put('/admin/{laboratorium:slug}/edit', [LaboratoriumController::class, 'update']);
-
+    Route::resource('laboratorium', LaboratoriumController::class);
     // Laboratorium TYPE
     Route::get('/admin/jenis-laboratorium', [LaboratoriumTypeController::class, 'index'])->name('admin.jenis-laboratorium');
     Route::get('/admin/tambah-jenis-laboratorium', [LaboratoriumTypeController::class, 'create'])->name('admin.jenis-laboratorium.create');
@@ -43,20 +35,32 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::post('/admin/barang/tambah-barang', [BarangController::class, 'store']);
     Route::get('/admin/{barang:slug}/ubah-barang', [BarangController::class, 'edit'])->name('admin.barang.edit');
     Route::put('/admin/{barang:slug}/ubah-barang', [BarangController::class, 'update']);
-
+    Route::get('/admin/penjadwalan', [PenjadwalanController::class, 'index'])->name('admin.penjadwalan');
+    Route::post('/penjadwalan/generate', [PenjadwalanController::class, 'createGenerateSchedule'])->name('admin.generate');
+    Route::post('/penjadwalan/tentatif', [PenjadwalanController::class, 'createTentativeSchedule'])->name('admin.tentative');    
+    Route::post('/penjadwalan/{id}/verifikasi', [PenjadwalanController::class, 'updateVerifikasi'])->name('penjadwalan.update-verifikasi');
+    Route::get('/penjadwalan/{id}', [PenjadwalanController::class, 'show'])->name('admin.penjadwalan.show');
 });
 
-Route::middleware(['auth', 'role:other'])->group(function(){
-    Route::get('/other/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard'); 
+Route::middleware(['auth', 'role:other'])->group(function () {
+    Route::get('/other/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/other/profile', [UserController::class, 'profile'])->name('user.profile');
     Route::put('/other/profile', [UserController::class, 'profile_update'])->name('user.profile_update');
+    
+    Route::post('/penjadwalan/generate', [PenjadwalanController::class, 'createGenerateSchedule'])->name('penjadwalan.generate');
+    Route::post('/penjadwalan/tentatif', [PenjadwalanController::class, 'createTentativeSchedule'])->name('penjadwalan.tentative');    
+    Route::get('/user/penjadwalan/create', [PenjadwalanController::class, 'create'])->name('user.penjadwalan.create');
+    Route::resource('penjadwalan', PenjadwalanController::class);
 });
 
-Route::middleware(['auth', 'role:laboran'])->group(function(){
+Route::middleware(['auth', 'role:laboran'])->group(function () {
     Route::get('/laboran/dashboard', [LaboranController::class, 'dashboard'])->name('laboran.dashboard');
     Route::get('/laboran/profile', [LaboranController::class, 'profile'])->name('laboran.profile');
     Route::put('/laboran/profile', [LaboranController::class, 'profile_update'])->name('laboran.profile_update');
+    Route::get('/laboran/penjadwalan', [PenjadwalanController::class, 'index'])->name('laboran.penjadwalan');
+    Route::post('/laboran/penjadwalan/{id}/verifikasi', [PenjadwalanController::class, 'updateVerifikasi'])->name('laboran.update-verifikasi');
+    Route::get('/laboran/penjadwalan/{id}', [PenjadwalanController::class, 'show'])->name('laboran.penjadwalan.show');
 
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

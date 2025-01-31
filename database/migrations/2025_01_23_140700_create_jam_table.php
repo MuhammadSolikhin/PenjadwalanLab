@@ -10,14 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('penjadwalan', function (Blueprint $table) {
+        Schema::create('jam', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->string('status');
-            $table->string('keperluan');
-            $table->string('jenis');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->time('waktu_mulai');
+            $table->time('waktu_selesai');
+            $table->string('jenis'); // A, B, CK, CS
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('penjadwalan');
+        Schema::dropIfExists('jam');
     }
 };
