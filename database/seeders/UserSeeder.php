@@ -45,5 +45,13 @@ class UserSeeder extends Seeder
             'role' => 'other',
             'priority' => 3
         ]);
+
+        User::create([
+            'name' => 'LSP',
+            'email' => 'lsp@gmail.com',
+            'password' => Hash::make('123456'),
+            'role' => 'other',
+            'priority' => 3
+        ]);
     }
 }

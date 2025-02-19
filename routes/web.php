@@ -9,6 +9,8 @@ use App\Http\Controllers\LaboranController;
 use App\Http\Controllers\LaboratoriumTypeController;
 use App\Http\Controllers\Admin\Barang\BarangController;
 
+require __DIR__ . '/auth.php';
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -60,7 +62,6 @@ Route::middleware(['auth', 'role:laboran'])->group(function () {
     Route::get('/laboran/penjadwalan', [PenjadwalanController::class, 'index'])->name('laboran.penjadwalan');
     Route::post('/laboran/penjadwalan/{id}/verifikasi', [PenjadwalanController::class, 'updateVerifikasi'])->name('laboran.update-verifikasi');
     Route::get('/laboran/penjadwalan/{id}', [PenjadwalanController::class, 'show'])->name('laboran.penjadwalan.show');
-
 });
 
-require __DIR__ . '/auth.php';
+
