@@ -8,18 +8,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Laboratorium extends Model
+class Lab extends Model
 {
     use HasFactory, HasSlug;
 
-    protected $table = 'laboratoria';
-
     protected $fillable = [
         'name',
-        'slug',
+        // 'slug',
         'lokasi',
         'kapasitas',
-        'status', 
     ];
 
     public function getSlugOptions(): SlugOptions
@@ -29,8 +26,9 @@ class Laboratorium extends Model
             ->saveSlugsTo('slug');
     }
 
-    public function penjadwalan(): HasMany
+    public function penjadwalan()
     {
-        return $this->hasMany(Penjadwalan::class);
+        return $this->belongsToMany(Penjadwalan::class, 'penjadwalan_lab', 'lab_id', 'penjadwalan_id');
     }
+    
 }

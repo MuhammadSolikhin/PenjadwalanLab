@@ -10,14 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('penjadwalan', function (Blueprint $table) {
+        Schema::create('detail_jadwal', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->string('status');
-            $table->string('keperluan');
-            $table->string('jenis');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->foreignId('penjadwalan_id')->constrained('penjadwalan');
+            $table->foreignId('jam_id')->constrained('jam');
+            $table->date('tanggal')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('penjadwalan');
+        Schema::dropIfExists('detail_jadwal');
     }
 };

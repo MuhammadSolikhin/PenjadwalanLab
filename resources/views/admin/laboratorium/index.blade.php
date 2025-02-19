@@ -19,7 +19,7 @@
                     <div class="card-header">
                         <div class="d-flex flex-wrap justify-content-between align-items-center">
                             <h3 class="card-title mb-2 mb-md-0">Data Laboratorium</h3>
-                            <a href="{{ route('admin.laboratorium.create') }}" class="col-12 col-md-3 btn btn-primary">
+                            <a href="{{ route('laboratorium.create') }}" class="col-12 col-md-3 btn btn-primary">
                                 <i class="fas fa-solid fa-plus"></i> Tambah
                             </a>
                         </div>
@@ -33,7 +33,6 @@
                                     <th>Nama Laboratorium</th>
                                     <th>Lokasi</th>
                                     <th>Kapasitas</th>
-                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -44,9 +43,8 @@
                                         <td>{{ $laboratorium->name}}</td>
                                         <td>{{ $laboratorium->lokasi}}</td>
                                         <td>{{ $laboratorium->kapasitas}}</td>
-                                        <td>{{ $laboratorium->status}}</td>
                                         <td>
-                                            <a href="{{ route('admin.laboratorium.edit', $laboratorium) }}" class="text-dark bg-primary p-2 rounded">
+                                            <a href="{{ route('laboratorium.edit', $laboratorium) }}" class="text-dark bg-primary p-2 rounded">
                                                 <i class="fas fa-regular fa-pen-to-square"></i>
                                             </a>
                                             <a href="" class="text-dark bg-danger rounded p-2 ml-2">

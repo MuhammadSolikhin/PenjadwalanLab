@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/admin/laboratorium" class="nav-link">
+                        <a href="{{route('laboratorium.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-flask"></i>
                             <p>Laboratorium</p>
                         </a>
@@ -68,7 +68,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/penjadwalan" class="nav-link">
+                        <a href="{{route('admin.penjadwalan')}}" class="nav-link">
                             <i class="nav-icon fas fa-clipboard-list"></i>
                             <p>Penjadwalan</p>
                         </a>
@@ -80,6 +80,12 @@
                         <a href="{{route('user.dashboard')}}" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('penjadwalan.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-bookmark"></i>
+                            <p>Penjadwalan Lab</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -100,6 +106,12 @@
                         <a href="{{route('laboran.profile')}}" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>Profile</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('laboran.penjadwalan')}}" class="nav-link">
+                            <i class="nav-icon fas fa-bookmark"></i>
+                            <p>Penjadwalan Lab</p>
                         </a>
                     </li>
                 @endif

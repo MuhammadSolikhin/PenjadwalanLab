@@ -9,24 +9,35 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Penjadwalan extends Model
 {
     use HasFactory;
-    protected $table = 'penjadwalan';
     protected $fillable = [
-        'name',
         'status',
         'keperluan',
-        'tgl_mulai',
-        'tgl_selesai',
+        'jenis',
+        'start_date',
+        'end_date',
         'user_id',
         'lab_id'
     ];
 
+    protected $table = 'penjadwalan';
+
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class,);
+        return $this->belongsTo(User::class, );
     }
 
-    public function laboratorium(): BelongsTo
+    public function labs()
     {
-        return $this->belongsTo(Laboratorium::class, 'lab_id');
+        return $this->belongsToMany(Lab::class, 'penjadwalan_lab', 'penjadwalan_id', 'lab_id');
+    }
+
+    public function detailJadwal()
+    {
+        return $this->hasMany(DetailJadwal::class);
+    }
+
+    public function jam()
+    {
+        return $this->belongsToMany(Jam::class, 'detail_jadwal', 'penjadwalan_id', 'jam_id');
     }
 }
